@@ -23,15 +23,11 @@ App = React.createClass({
     var toUser = ReactDOM.findDOMNode(this.refs.toUser).value.trim();
     var letterBody = ReactDOM.findDOMNode(this.refs.letterBody).value.trim();
 
-    Letters.insert({
-      toUser: toUser,
-      letterBody: letterBody,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username
-    });
+    Meteor.call("addLetter", toUser, letterBody);
+
     // Clear form
-    ReactDOM.findDOMNode(this.refs.textArea).value = "";
+    ReactDOM.findDOMNode(this.refs.toUser).value = "";
+    ReactDOM.findDOMNode(this.refs.letterBody).value = "";
   },
 
   render() {

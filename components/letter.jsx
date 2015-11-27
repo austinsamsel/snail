@@ -6,7 +6,7 @@ Letter = React.createClass({
   },
 
   deleteThisLetter() {
-    Letters.remove(this.props.letter._id);
+    Meteor.call("removeLetter", this.props.letter._id);
   },
 
   render(){

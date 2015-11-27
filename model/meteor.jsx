@@ -9,3 +9,23 @@ if (Meteor.isClient) {
     ReactDOM.render(<App />, document.getElementById("app"));
   });
 }
+
+Meteor.methods({
+  addLetter(toUser, letterBody) {
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Letters.insert({
+      toUser: toUser,
+      letterBody: letterBody,
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username
+    });
+  },
+
+  removeLetter(letterId){
+    Letters.remove(letterId);
+  }
+});
