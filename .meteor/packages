@@ -19,3 +19,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 react
 accounts-ui
 accounts-password
+kadira:flow-router
+kadira:react-layout

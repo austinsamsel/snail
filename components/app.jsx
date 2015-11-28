@@ -1,4 +1,4 @@
-// App component - represents the whole app
+// Home component
 App = React.createClass({
   //this mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
@@ -6,7 +6,8 @@ App = React.createClass({
   getMeteorData(){
     return{
       letters: Letters.find({}, {sort: {createdAt: -1}}).fetch(),
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
+      users: Meteor.users.find().fetch()
     };
   },
 
@@ -34,11 +35,6 @@ App = React.createClass({
     return (
       <div className="container">
         <header>
-          <h1>app</h1>
-
-          <AccountsUIWrapper />
-
-          <FindUsers />
 
           { this.data.currentUser ?
             <form className="new-letter" onSubmit={this.handleSubmit} >
