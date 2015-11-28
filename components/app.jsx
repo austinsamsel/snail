@@ -38,13 +38,15 @@ App = React.createClass({
 
           <AccountsUIWrapper />
 
+          <FindUsers />
+
           { this.data.currentUser ?
             <form className="new-letter" onSubmit={this.handleSubmit} >
               <input
                 type="text"
                 ref="toUser"
                 placeholder="send to…"
-                />
+              />
               <textarea
                 ref="letterBody"
                 placeholder="Type your letter"></textarea>
