@@ -7,7 +7,7 @@ App = React.createClass({
     return{
       letters: Letters.find({}, {sort: {createdAt: -1}}).fetch(),
       currentUser: Meteor.user(),
-      users: Meteor.users.find().fetch()
+      users: Meteor.users.find(),
     };
   },
 

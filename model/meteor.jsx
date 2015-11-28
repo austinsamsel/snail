@@ -6,17 +6,18 @@ if (Meteor.isClient) {
   })
 
   Meteor.subscribe("letters");
+  Meteor.subscribe("userData");
 
-  Meteor.startup(function () {
-    // Use Meteor.startup to render the component after the page is ready
-    ReactDOM.render(<App />, document.getElementById("app"));
-  });
 }
 
 if (Meteor.isServer) {
   Meteor.publish("letters", function() {
     return Letters.find();
   });
+  Meteor.publish("userData", function () {
+    return Meteor.users.find({},{fields: {'username': 1}});
+  });
+
 }
 
 Meteor.methods({
