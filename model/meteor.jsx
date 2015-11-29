@@ -1,4 +1,5 @@
 Letters = new Mongo.Collection("letters");
+Relationships = new Mongo.Collection("relationships");
 
 if (Meteor.isClient) {
   Accounts.ui.config({

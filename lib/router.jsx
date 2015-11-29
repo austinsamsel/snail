@@ -6,7 +6,7 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/discover', {
+FlowRouter.route('/users', {
   action: function() {
     ReactLayout.render(Layout, {
       content: <FindUsers />
