@@ -8,7 +8,8 @@ User = React.createClass({
   render(){
     return (
       <li>
-        {this.props.user.username} <button>Save Contact</button>
+        {this.props.user.username}
+
       </li>
     )
   }
