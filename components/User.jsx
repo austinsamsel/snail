@@ -9,7 +9,6 @@ User = React.createClass({
     return (
       <li>
         {this.props.user.username}
-
       </li>
     )
   }
