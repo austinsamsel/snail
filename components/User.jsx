@@ -21,13 +21,9 @@ User = React.createClass({
     var notFollowedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) == null;
     var followUserButton = notCurrentUser && notFollowedByCurrentUser;
 
-
     var followedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) != null;
 
     var unfollowUserButton = notCurrentUser && followedByCurrentUser;
-
-    //var followedId = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUser}]}).saveContact;
-    //var unfollowUser = (this.props.user._id == ;
 
     return (
       <li>
