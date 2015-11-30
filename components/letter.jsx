@@ -23,20 +23,21 @@ Letter = React.createClass({
       <span>
         { toUser ? (
             <li>
+              <strong>from- {fromAddress}</strong>
+              &nbsp; { this.props.letter.letterBody}
               <button className="delete" onClick={this.deleteReceivedLetter}>
                 &times;
               </button>
-              <strong>from- {fromAddress}</strong>
-              &nbsp; { this.props.letter.letterBody}
             </li>
+
           ) : '' }
         { fromUser ? (
             <li>
+              <strong>to- {this.props.letter.toUser} </strong>
+              &nbsp; { this.props.letter.letterBody}
               <button className="delete" onClick={this.deleteSentLetter}>
                 &times;
               </button>
-              <strong>to- {this.props.letter.toUser} </strong>
-              &nbsp; { this.props.letter.letterBody}
             </li>
           ) : '' }
       </span>
