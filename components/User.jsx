@@ -10,16 +10,21 @@ User = React.createClass({
   },
   removeThisContact(){
     var currentUserId = Meteor.userId();
-    Meteor.call("removeContact", currentUserId, this.props.user._id);
+    var followedUserId = this.props.user._id;
+    Meteor.call("removeContact", currentUserId, followedUserId);
   },
 
   render(){
     var currentUserId = Meteor.userId();
     var followedUserId = this.props.user._id;
     var notCurrentUser = this.props.user._id != currentUserId;
-    var notFollowedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) == null
+    var notFollowedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) == null;
     var followUserButton = notCurrentUser && notFollowedByCurrentUser;
 
+
+    var followedByCurrentUser = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUserId}] }) != null;
+
+    var unfollowUserButton = notCurrentUser && followedByCurrentUser;
 
     //var followedId = Relationships.findOne({$and : [{owner : currentUserId}, {saveContact : followedUser}]}).saveContact;
     //var unfollowUser = (this.props.user._id == ;
@@ -31,8 +36,7 @@ User = React.createClass({
           <button className="save" onClick={this.saveThisContact}>save contact</button>
           ) : ''}
 
-
-        { (1+1 != 2) ? (
+        { unfollowUserButton ? (
           <button className="remove" onClick={this.removeThisContact}>remove contact</button>
         ): ''}
       </li>

@@ -56,12 +56,11 @@ Meteor.methods({
     Relationships.insert({
       owner: currentUserId,
       saveContact: saveContactId,
-      followed: true,
       createdAt: new Date()
     });
   },
-  removeContact(currentUserId, saveContactId){
-    Relationships.update(userId, { $set: {} });
+  removeContact(currentUserId, followedUserId){
+    Relationships.remove({$and : [{owner : currentUserId}, {saveContact : followedUserId}] });
   },
 
 
