@@ -6,9 +6,11 @@ Relationship = React.createClass({
   },
 
   render(){
+    var saveContact = this.props.relationship.saveContact;
+    var username = Meteor.users.findOne({_id: saveContact}).username;
     return (
       <li>
-        {this.props.relationship._id}
+        {username}
       </li>
     )
   }
