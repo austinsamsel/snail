@@ -8,6 +8,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe("letters");
   Meteor.subscribe("userData");
+  Meteor.subscribe("relationships");
 
 }
 
@@ -20,7 +21,7 @@ if (Meteor.isServer) {
   Meteor.publish("userData", function () {
     return Meteor.users.find({},{fields: {'username': 1}});
   });
-
+  Meteor.publish("relationships");
 }
 
 Meteor.methods({

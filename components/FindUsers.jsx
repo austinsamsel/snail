@@ -5,7 +5,8 @@ FindUsers = React.createClass({
     return{
       //users: Meteor.users.find(searchUsers).fetch()
       //users: Meteor.users.find().fetch()
-      users: Meteor.users.find({username: searchUsers}).fetch()
+      users: Meteor.users.find({username: searchUsers}).fetch(),
+      relationships: Relationships.find().fetch()
     };
   },
 
@@ -27,6 +28,12 @@ FindUsers = React.createClass({
     });
   },
 
+  renderRelationships() {
+    return this.data.relationships.map((relationship) => {
+      return <Relationship key={relationship._id} relationship={relationship} />;
+    });
+  },
+
   render(){
     var searchUsers = this.state.searchUsers;
     return (
@@ -42,6 +49,9 @@ FindUsers = React.createClass({
         </form>
         <ul>
           {this.renderUsers()}
+        </ul>
+        <ul>
+          {this.renderRelationships()}
         </ul>
       </div>
     );
