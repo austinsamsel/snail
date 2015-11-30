@@ -5,6 +5,16 @@ Letter = React.createClass({
     letter: React.PropTypes.object.isRequired
   },
 
+  render(){
+    return (
+      <span>
+        {this.letterToUser()}
+        {this.letterFromUser()}
+      </span>
+    )
+  },
+
+  //method calls
   deleteReceivedLetter() {
     Meteor.call("deleteReceivedLetter", this.props.letter._id);
   },
@@ -12,36 +22,40 @@ Letter = React.createClass({
     Meteor.call("deleteSentLetter", this.props.letter._id);
   },
 
-  render(){
-    var fromAddress = Meteor.users.findOne({_id: this.props.letter.owner}).username;
-    var currentUserId = Meteor.userId();
-    var username = Meteor.users.findOne({_id: currentUserId}).username;
-    var toUser = this.props.letter.toUser == username && this.props.letter.hideReceived == null;
-    var fromUser = this.props.letter.owner == currentUserId && this.props.letter.hideSent == null;
+  // render conditionals
+  letterToUser(){
+    if ( this.toCurrentUser() ){
+      return <li>
+        <strong>from- {this.senderAddress()}</strong>
+        &nbsp; { this.props.letter.letterBody}
+        <button className="delete" onClick={this.deleteReceivedLetter}>
+          &times;
+        </button>
+      </li>;
+    }
+  },
+  letterFromUser(){
+    if ( this.fromCurrentUser() ) {
+      return <li>
+        <strong>to- {this.props.letter.toUser} </strong>
+        &nbsp; { this.props.letter.letterBody}
+        <button className="delete" onClick={this.deleteSentLetter}>
+          &times;
+        </button>
+      </li>;
+    }
+  },
 
-    return (
-      <span>
-        { toUser ? (
-            <li>
-              <strong>from- {fromAddress}</strong>
-              &nbsp; { this.props.letter.letterBody}
-              <button className="delete" onClick={this.deleteReceivedLetter}>
-                &times;
-              </button>
-            </li>
-
-          ) : '' }
-        { fromUser ? (
-            <li>
-              <strong>to- {this.props.letter.toUser} </strong>
-              &nbsp; { this.props.letter.letterBody}
-              <button className="delete" onClick={this.deleteSentLetter}>
-                &times;
-              </button>
-            </li>
-          ) : '' }
-      </span>
-    )
-  }
-
+  //helper functions
+  senderAddress(){
+    return Meteor.users.findOne({_id: this.props.letter.owner}).username;
+  },
+  toCurrentUser(){
+    if ((this.props.letter.toUser == Meteor.user().username) && (this.props.letter.hideReceived == null))
+      return true;
+  },
+  fromCurrentUser(){
+    if ( this.props.letter.owner == Meteor.userId() && this.props.letter.hideSent == null )
+      return true;
+  },
 })
