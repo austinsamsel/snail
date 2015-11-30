@@ -13,7 +13,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.publish("letters", function() {
-    return Letters.find();
+    // letters where toUser == currentUserId
+    var username = Meteor.users.findOne({_id: this.userId}).username;
+    return Letters.find({$or : [{toUser: username}, {owner: this.userId}]});
   });
   Meteor.publish("userData", function () {
     return Meteor.users.find({},{fields: {'username': 1}});
@@ -26,7 +28,6 @@ Meteor.methods({
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-
     Letters.insert({
       toUser: toUser,
       letterBody: letterBody,
@@ -36,7 +37,29 @@ Meteor.methods({
     });
   },
 
-  removeLetter(letterId){
-    Letters.remove(letterId);
-  }
+  deleteReceivedLetter(letterId){
+    Letters.update(letterId, {$set: {hideReceived: true}});
+  },
+  deleteSentLetter(letterId){
+    Letters.update(letterId, {$set: {hideSent: true}});
+  },
+
+  saveContact(saveContactId){
+    //var currentUserId = Meteor.userId();
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+    var currentUserId = Meteor.userId();
+    Relationships.insert({
+      owner: currentUserId,
+      saveContact: saveContactId,
+      followed: true,
+      createdAt: new Date()
+    });
+  },
+  removeContact(currentUserId, saveContactId){
+    Relationships.update(userId, { $set: {} });
+  },
+
+
 });
