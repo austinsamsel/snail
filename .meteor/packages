@@ -21,3 +21,4 @@ accounts-ui
 accounts-password
 kadira:flow-router
 kadira:react-layout
+momentjs:moment

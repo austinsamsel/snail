@@ -10,6 +10,8 @@ Letter = React.createClass({
       <span>
         {this.letterToUser()}
         {this.letterFromUser()}
+
+        {this.letterCreatedAt()}
       </span>
     )
   },
@@ -27,7 +29,7 @@ Letter = React.createClass({
     if ( this.toCurrentUser() ){
       return <li>
         <strong>from- {this.senderAddress()}</strong>
-        &nbsp; { this.props.letter.letterBody}
+        &nbsp; {this.props.letter.letterBody}
         <button className="delete" onClick={this.deleteReceivedLetter}>
           &times;
         </button>
@@ -47,6 +49,10 @@ Letter = React.createClass({
   },
 
   //helper functions
+  letterCreatedAt(){
+    var a = Letters.findOne({_id: this.props.letter._id}).createdAt;
+    return moment(a).format('MMMM Do YYYY, h:mm a');
+  },
   senderAddress(){
     return Meteor.users.findOne({_id: this.props.letter.owner}).username;
   },
