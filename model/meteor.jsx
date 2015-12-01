@@ -5,16 +5,13 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   })
-
   Meteor.subscribe("letters");
   Meteor.subscribe("userData");
   Meteor.subscribe("relationships");
-
 }
 
 if (Meteor.isServer) {
   Meteor.publish("letters", function() {
-    // letters where toUser == currentUserId
     var username = Meteor.users.findOne({_id: this.userId}).username;
     return Letters.find({$or : [{toUser: username}, {owner: this.userId}]});
   });
@@ -35,6 +32,7 @@ Meteor.methods({
       toUser: toUser,
       letterBody: letterBody,
       createdAt: new Date(),
+      deliverAt: moment().add(3, 'hours'),
       owner: Meteor.userId(),
       username: Meteor.user().username
     });
@@ -48,7 +46,6 @@ Meteor.methods({
   },
 
   saveContact(saveContactId){
-    //var currentUserId = Meteor.userId();
     if (! Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
@@ -62,6 +59,4 @@ Meteor.methods({
   removeContact(currentUserId, followedUserId){
     Relationships.remove({$and : [{owner : currentUserId}, {saveContact : followedUserId}] });
   },
-
-
 });

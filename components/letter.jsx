@@ -10,8 +10,8 @@ Letter = React.createClass({
       <span>
         {this.letterToUser()}
         {this.letterFromUser()}
-
-        {this.letterCreatedAt()}
+        created: {this.letterCreatedAt()}
+        deliver: {this.letterDeliverAt()}
       </span>
     )
   },
@@ -50,7 +50,11 @@ Letter = React.createClass({
 
   //helper functions
   letterCreatedAt(){
-    var a = Letters.findOne({_id: this.props.letter._id}).createdAt;
+    var a = this.props.letter.createdAt;
+    return moment(a).format('MMMM Do YYYY, h:mm a');
+  },
+  letterDeliverAt(){
+    var a = this.props.letter.deliverAt._d;
     return moment(a).format('MMMM Do YYYY, h:mm a');
   },
   senderAddress(){
