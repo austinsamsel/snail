@@ -13,7 +13,17 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.publish("letters", function() {
     var username = Meteor.users.findOne({_id: this.userId}).username;
-    return Letters.find({$or : [{toUser: username}, {owner: this.userId}]});
+    return Letters.find({
+      $or :
+      [
+        { $and:
+          [ { toUser: username },
+            { 'deliverAt._d': {$lt: moment()._d} }
+          ]
+        },
+        { owner: this.userId }
+      ]
+    });
   });
   Meteor.publish("userData", function () {
     return Meteor.users.find({},{fields: {'username': 1}});
