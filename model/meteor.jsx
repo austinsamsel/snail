@@ -42,7 +42,7 @@ Meteor.methods({
       toUser: toUser,
       letterBody: letterBody,
       createdAt: new Date(),
-      deliverAt: moment().add(3, 'hours'),
+      deliverAt: moment().add(1, 'minute'),
       owner: Meteor.userId(),
       username: Meteor.user().username
     });
