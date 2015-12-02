@@ -20,27 +20,24 @@ App = React.createClass({
     event.preventDefault();
 
     //Find the textarea via the React ref
-    var toUser = ReactDOM.findDOMNode(this.refs.toUser).value.trim();
+    var toUser = ReactDOM.findDOMNode(this.refs.toUser.refs.entry).value.trim();
     var letterBody = ReactDOM.findDOMNode(this.refs.letterBody).value.trim();
 
     Meteor.call("addLetter", toUser, letterBody);
 
     // Clear form
-    ReactDOM.findDOMNode(this.refs.toUser).value = "";
+    ReactDOM.findDOMNode(this.refs.toUser.refs.entry).value = "";
     ReactDOM.findDOMNode(this.refs.letterBody).value = "";
   },
 
   getRelationships(){
     q = Relationships.find().fetch();
-
     ids = q.map((q) => {
       return q.saveContact
     });
-
     usernames = ids.map((ids) => {
       return Meteor.users.findOne({ _id: ids }).username;
     })
-
     return usernames;
   },
 
@@ -51,13 +48,11 @@ App = React.createClass({
 
           { this.data.currentUser ?
             <form className="new-letter" onSubmit={this.handleSubmit} >
-              <input
+
+              <Typeahead
                 type="text"
                 ref="toUser"
                 placeholder="send to…"
-              />
-
-              <Typeahead
                 options={this.getRelationships()}
                 maxVisible={3}
               />
