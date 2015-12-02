@@ -22,3 +22,8 @@ accounts-password
 kadira:flow-router
 kadira:react-layout
 momentjs:moment
+meteorhacks:npm
+cosmos:browserify
+
+
+npm-container

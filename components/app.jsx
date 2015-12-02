@@ -30,6 +30,20 @@ App = React.createClass({
     ReactDOM.findDOMNode(this.refs.letterBody).value = "";
   },
 
+  getRelationships(){
+    q = Relationships.find().fetch();
+
+    ids = q.map((q) => {
+      return q.saveContact
+    });
+
+    usernames = ids.map((ids) => {
+      return Meteor.users.findOne({ _id: ids }).username;
+    })
+
+    return usernames;
+  },
+
   render() {
     return (
       <div className="container">
@@ -42,6 +56,12 @@ App = React.createClass({
                 ref="toUser"
                 placeholder="send to…"
               />
+
+              <Typeahead
+                options={this.getRelationships()}
+                maxVisible={3}
+              />
+
               <textarea
                 ref="letterBody"
                 placeholder="Type your letter"></textarea>
