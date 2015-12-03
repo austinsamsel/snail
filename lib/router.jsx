@@ -11,7 +11,8 @@ FlowRouter.route('/users', {
     ReactLayout.render(Layout, {
       content: <FindUsers />
     });
-  }
+  },
+  name: "users"
 });
 
 FlowRouter.route('/post/:slug', {
