@@ -1,24 +1,19 @@
 FlowRouter.route('/', {
-  action: function() {
+  subscriptions: function() {
+    //this.register('letters', Letters.find({}, {sort: {createdAt: -1}}));
+  },
+  action() {
     ReactLayout.render(Layout, {
-      content: <App />
+      content: <LettersList />
     });
   }
 });
 
 FlowRouter.route('/users', {
-  action: function() {
+  name: "contacts",
+  action() {
     ReactLayout.render(Layout, {
-      content: <FindUsers />
-    });
-  },
-  name: "users"
-});
-
-FlowRouter.route('/post/:slug', {
-  action: function(params) {
-    ReactLayout.render(Layout, {
-      content: <Post slug={params.slug} />
+      content: <FindContacts />
     });
   }
 });

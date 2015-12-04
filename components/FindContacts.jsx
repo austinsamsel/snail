@@ -1,7 +1,9 @@
-FindUsers = React.createClass({
+FindContacts = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData(){
     var searchUsers = this.state.searchUsers;
+    Meteor.subscribe("userData");
+    Meteor.subscribe("relationships");
     return{
       users: Meteor.users.find({username: searchUsers}).fetch(),
       relationships: Relationships.find().fetch()
