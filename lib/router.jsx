@@ -17,3 +17,12 @@ FlowRouter.route('/users', {
     });
   }
 });
+
+FlowRouter.route('/test', {
+  name: "test",
+  action() {
+    ReactLayout.render(TodoList, {
+      content: <FindContacts />
+    });
+  }
+});

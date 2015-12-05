@@ -22,6 +22,7 @@ Layout = React.createClass({
             <a href={FlowRouter.path('contacts')}>Contacts</a>
 
             <hr />
+
             <Compose />
 
             <hr />
