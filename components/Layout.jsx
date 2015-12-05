@@ -33,8 +33,6 @@ Layout = React.createClass({
             <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
             <a href={FlowRouter.path('contacts')}>Contacts</a>
 
-            <hr />
-
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
               <Compose />

@@ -5,13 +5,33 @@ Letter = React.createClass({
     letter: React.PropTypes.object.isRequired
   },
 
+  getInitialState: function() {
+    return { isModalOpen: false };
+  },
+  openModal: function() {
+    this.setState({ isModalOpen: true });
+  },
+  closeModal: function() {
+    this.setState({ isModalOpen: false });
+  },
+
   render(){
     return (
       <span>
-        {this.letterToUser()}
-        {this.letterFromUser()}
-        created: {this.letterCreatedAt()}
-        deliver: {this.letterDeliverAt()}
+        <Modal isOpen={this.state.isModalOpen}
+               transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
+          <div className="letter-modal">
+            {this.letterToUser()}
+            {this.letterFromUser()}
+          </div>
+          <button onClick={this.closeModal}>Close modal</button>
+        </Modal>
+
+        <span onClick={this.openModal}>
+          {this.letterToUser()}
+          {this.letterFromUser()}
+        </span>
+
       </span>
     )
   },
@@ -49,11 +69,11 @@ Letter = React.createClass({
   },
 
   //helper functions
-  letterCreatedAt(){
+  letterCreatedAt(){ // not in use // created: {this.letterCreatedAt()}
     var a = this.props.letter.createdAt;
     return moment(a).format('MMMM Do YYYY, h:mm a');
   },
-  letterDeliverAt(){
+  letterDeliverAt(){ // not in use // deliver: {this.letterDeliverAt()}
     var a = this.props.letter.deliverAt._d;
     return moment(a).format('MMMM Do YYYY, h:mm a');
   },
