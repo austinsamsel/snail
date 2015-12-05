@@ -8,6 +8,18 @@ Layout = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return { isModalOpen: false };
+  },
+
+  openModal: function() {
+    this.setState({ isModalOpen: true });
+  },
+
+  closeModal: function() {
+    this.setState({ isModalOpen: false });
+  },
+
   render() {
     return (
       <div>
@@ -18,10 +30,19 @@ Layout = React.createClass({
             <AccountsUIWrapper />
 
             <hr />
-            <a href="/">Compose</a> &nbsp;&nbsp; &nbsp;
+            <a onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
             <a href={FlowRouter.path('contacts')}>Contacts</a>
 
             <hr />
+
+            <Modal isOpen={this.state.isModalOpen}
+                   transitionName="modal-anim">
+              <h3>My Modal</h3>
+              <div className="body">
+                <p>This is the modal&apos;s body.</p>
+              </div>
+              <button onClick={this.closeModal}>Close modal</button>
+            </Modal>
 
             <Compose />
 

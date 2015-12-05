@@ -1,3 +1,4 @@
+//var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 TodoList = React.createClass({
@@ -10,27 +11,25 @@ TodoList = React.createClass({
     this.setState({items: newItems});
   },
   handleRemove: function(i) {
-    var newItems = this.state.items;
+    var newItems = this.state.items.slice();
     newItems.splice(i, 1);
     this.setState({items: newItems});
   },
   render: function() {
     var items = this.state.items.map(function(item, i) {
       return (
-        <h2 className="todo-item" key={item} onClick={this.handleRemove.bind(this, i)}>
+        <div key={item} onClick={this.handleRemove.bind(this, i)}>
           {item}
-        </h2>
+        </div>
       );
     }.bind(this));
     return (
       <div>
         <button onClick={this.handleAdd}>Add Item</button>
-        <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500}   transitionLeaveTimeout={300}>
+        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
           {items}
         </ReactCSSTransitionGroup>
       </div>
     );
   }
 });
-
-//React.render(<TodoList />, document.getElementById('root'));

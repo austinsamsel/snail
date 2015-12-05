@@ -1,10 +1,18 @@
+// https://facebook.github.io/react/docs/animation.html#getting-started
+
+.container { max-width: 400px; }
+h2::before { content: '- ' }
+
 .example-enter {
   opacity: 0.01;
+  //position: absolute;
+  //top: -2em;
 }
 
 .example-enter.example-enter-active {
+  //top: 10em;
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 0.5s ease;
 }
 
 .example-leave {
@@ -13,5 +21,34 @@
 
 .example-leave.example-leave-active {
   opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  transition: opacity .5s ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+}
+
+// http://blog.tryolabs.com/2015/04/13/a-reusable-modal-component-in-react/
+.modal-anim-enter {
+    opacity: 0.00;
+    transform: scale(0.7);
+    transition: all 0.2s;
+}
+.modal-anim-enter.modal-anim-enter-active {
+    opacity: 1;
+    transform: scale(1);
+}
+.modal-anim-leave {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.2s;
+}
+.modal-anim-leave.modal-anim-leave-active {
+    opacity: 0.00;
+    transform: scale(0.7);
 }
