@@ -25,13 +25,14 @@ Layout = React.createClass({
       <div>
         { this.data.currentUser ?
           <div>
-            <h1>app</h1>
+            <h1>Snailchat</h1>
 
             <AccountsUIWrapper />
 
-            <hr />
-            <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
-            <a href={FlowRouter.path('contacts')}>Contacts</a>
+            <div className="navigation">
+              <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
+              <a href={FlowRouter.path('contacts')}>Contacts</a>
+            </div>
 
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
@@ -39,9 +40,8 @@ Layout = React.createClass({
               <button onClick={this.closeModal}>Close modal</button>
             </Modal>
 
-            <hr />
             {this.props.content}
-            <hr />
+
             footer stuff
           </div>
 
