@@ -25,9 +25,10 @@ Layout = React.createClass({
       <div>
         { this.data.currentUser ?
           <div>
-            <h1>Snailchat</h1>
-
             <AccountsUIWrapper />
+            <div className="logo">
+              <img src="images/snail_logo.png" />
+            </div>
 
             <div className="navigation">
               <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;

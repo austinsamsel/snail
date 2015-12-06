@@ -5,9 +5,9 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   })
-  // Meteor.subscribe("letters");
-  // Meteor.subscribe("userData");
-  // Meteor.subscribe("relationships");
+  Meteor.subscribe("letters");
+  Meteor.subscribe("userData");
+  Meteor.subscribe("relationships");
 }
 
 if (Meteor.isServer) {

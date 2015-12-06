@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="179px" height="33px" viewBox="0 0 179 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16618) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="logo" sketch:type="MSArtboardGroup">
+            <path d="M16,32 L31,32 L31,17 C31,8.71572875 24.2842712,2 16,2 C7.71572875,2 1,8.71572875 1,17 C1,25.2842712 7.71572875,32 16,32 Z" id="Oval-35" fill="#2AFFE6" sketch:type="MSShapeGroup"></path>
+            <text id="Snailchat" sketch:type="MSTextLayer" font-family="Lato" font-size="36" font-weight="206" letter-spacing="1" fill="#555555">
+                <tspan x="36" y="31">Snailcha</tspan>
+                <tspan x="166.364" y="31">t</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -1,54 +1,88 @@
-// https://facebook.github.io/react/docs/animation.html#getting-started
+// font family
+$soleil: "soleil",sans-serif;
+$type: "source-code-pro",sans-serif;
 
-.container { max-width: 400px; }
-h2::before { content: '- ' }
+$aqua: #29EBD5; //logo: #2AFFE6;
+$purple: #A2AAFF;
 
-.example-enter {
-  opacity: 0.01;
-  //position: absolute;
-  //top: -2em;
+$lt-gray: #AEAEAE;
+$md-gray: #767676;
+
+$ink: #756F7C;
+
+html {
+  font-size: 62.5%;
+}
+body{
+  font-family:$soleil;
+  font-size: 14px; font-size: 1.4rem;
+}
+img {
+  width:100%;
+}
+.logo{
+  max-width:200px;
+}
+a {
+  color:$md-gray;
+  text-decoration:none;
+  transition:0.25s linear;
+}
+a:hover{
+  color:$aqua;
 }
 
-.example-enter.example-enter-active {
-  //top: 10em;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+/* accounts overrides */
+#login-buttons a, .accounts-dialog a {
+  text-decoration: none !important;
 }
 
-.example-leave {
-  opacity: 1;
+/* letters list */
+.letters-list ul{
+  list-style:none;
+  padding:0;
 }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
+.letter-from,
+.letter-to{
+  font-weight:700;
 }
-
-.example-appear {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
+.letter-from{
+  color:$purple;
 }
-
-.example-appear.example-appear-active {
-  opacity: 1;
+.letter-to{
+  color:$aqua;
+}
+.address-context{
+  text-transform:uppercase;
+  font-size:0.8rem;
+  display:block;
+  margin-bottom:-0.8rem;
+}
+.contact{
+  font-size:1.8rem;
+}
+.letter-body{
+  font-family:$type;
+  color:$ink;
 }
 
 // http://blog.tryolabs.com/2015/04/13/a-reusable-modal-component-in-react/
 .modal-anim-enter {
-    opacity: 0.00;
-    transform: scale(0.7);
-    transition: all 0.2s;
+  opacity: 0.00;
+  transform: scale(0.7);
+  transition: all 0.2s;
 }
 .modal-anim-enter.modal-anim-enter-active {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 .modal-anim-leave {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 0.2s;
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s;
 }
 .modal-anim-leave.modal-anim-leave-active {
-    opacity: 0.00;
-    transform: scale(0.7);
+  opacity: 0.00;
+  transform: scale(0.7);
 }

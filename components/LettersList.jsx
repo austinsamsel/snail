@@ -19,7 +19,7 @@ LettersList = React.createClass({
 
   render() {
     return (
-      <div className="container">
+      <div className="letters-list">
         <ul>
           {this.renderLetters()}
         </ul>

@@ -48,8 +48,11 @@ Letter = React.createClass({
   letterToUser(){
     if ( this.toCurrentUser() ){
       return <li>
-        <strong>from- {this.senderAddress()}</strong>
-        &nbsp; {this.props.letter.letterBody}
+        <div className="letter-from">
+          <span className="address-context">from</span>
+          <span className="contact">{this.senderAddress()}</span>
+        </div>
+        <div className="letter-body">{this.props.letter.letterBody}</div>
         <button className="delete" onClick={this.deleteReceivedLetter}>
           &times;
         </button>
@@ -59,8 +62,11 @@ Letter = React.createClass({
   letterFromUser(){
     if ( this.fromCurrentUser() ) {
       return <li>
-        <strong>to- {this.props.letter.toUser} </strong>
-        &nbsp; { this.props.letter.letterBody}
+        <div className="letter-to">
+          <span className="address-context">to</span>
+          <span className="contact">{this.props.letter.toUser}</span>
+        </div>
+        <div className="letter-body">{ this.props.letter.letterBody}</div>
         <button className="delete" onClick={this.deleteSentLetter}>
           &times;
         </button>
