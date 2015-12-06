@@ -32,8 +32,9 @@ Layout = React.createClass({
 
             <div className="navigation">
               <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
-              <a href={FlowRouter.path('home')}>Letters</a> &nbsp;&nbsp; &nbsp;
-              <a href={FlowRouter.path('contacts')}>Contacts</a>
+              <a href={FlowRouter.path('home')}
+                className={FlowHelpers.currentRoute( 'home' )}>Letters</a> &nbsp;&nbsp; &nbsp;
+              <a href={FlowRouter.path('contacts')}       className={FlowHelpers.currentRoute( 'contacts' )}>Contacts</a>
             </div>
 
             <Modal isOpen={this.state.isModalOpen}

@@ -24,3 +24,13 @@ FlowRouter.route('/test', {
     });
   }
 });
+
+// helpers
+let currentRoute = ( route ) => {
+  FlowRouter.watchPathChange();
+  return FlowRouter.current().route.name === route ? 'active' : '';
+};
+
+FlowHelpers = {
+  currentRoute: currentRoute
+};
