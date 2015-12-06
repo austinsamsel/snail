@@ -24,7 +24,7 @@ Layout = React.createClass({
     return (
       <div>
         { this.data.currentUser ?
-          <div>
+          <div className="app-container">
             <AccountsUIWrapper />
             <div className="logo">
               <img src="images/snail_logo.png" />
@@ -32,6 +32,7 @@ Layout = React.createClass({
 
             <div className="navigation">
               <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
+              <a href={FlowRouter.path('home')}>Letters</a> &nbsp;&nbsp; &nbsp;
               <a href={FlowRouter.path('contacts')}>Contacts</a>
             </div>
 

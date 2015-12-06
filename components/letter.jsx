@@ -53,9 +53,11 @@ Letter = React.createClass({
           <span className="contact">{this.senderAddress()}</span>
         </div>
         <div className="letter-body">{this.props.letter.letterBody}</div>
-        <button className="delete" onClick={this.deleteReceivedLetter}>
-          &times;
-        </button>
+        <div className="remove-letter">
+          <span className="remove-btn" onClick={this.deleteSentLetter}>
+            &times;
+          </span>
+        </div>
       </li>;
     }
   },
@@ -67,9 +69,12 @@ Letter = React.createClass({
           <span className="contact">{this.props.letter.toUser}</span>
         </div>
         <div className="letter-body">{ this.props.letter.letterBody}</div>
-        <button className="delete" onClick={this.deleteSentLetter}>
-          &times;
-        </button>
+        <div className="remove-letter">
+          <span className="remove-btn" onClick={this.deleteSentLetter}>
+            &times;
+          </span>
+        </div>
+
       </li>;
     }
   },

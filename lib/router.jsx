@@ -1,7 +1,5 @@
 FlowRouter.route('/', {
-  subscriptions: function() {
-    //this.register('letters', Letters.find({}, {sort: {createdAt: -1}}));
-  },
+  name: "home",
   action() {
     ReactLayout.render(Layout, {
       content: <LettersList />
