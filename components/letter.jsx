@@ -20,16 +20,18 @@ Letter = React.createClass({
       <span>
         <Modal isOpen={this.state.isModalOpen}
                transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
+          <span className="modal-close" onClick={this.closeModal}>&times;</span>
           <div className="letter-modal">
             {this.letterToUser()}
             {this.letterFromUser()}
           </div>
-          <button onClick={this.closeModal}>Close modal</button>
         </Modal>
 
         <span onClick={this.openModal}>
-          {this.letterToUser()}
-          {this.letterFromUser()}
+          <div class="modal-letter">
+            {this.letterToUser()}
+            {this.letterFromUser()}
+          </div>
         </span>
 
       </span>
@@ -55,7 +57,7 @@ Letter = React.createClass({
         <div className="letter-body">{this.props.letter.letterBody}</div>
         <div className="remove-letter">
           <span className="remove-btn" onClick={this.deleteSentLetter}>
-            &times;
+            <i className="trash outline icon"></i>
           </span>
         </div>
       </li>;
@@ -71,7 +73,7 @@ Letter = React.createClass({
         <div className="letter-body">{ this.props.letter.letterBody}</div>
         <div className="remove-letter">
           <span className="remove-btn" onClick={this.deleteSentLetter}>
-            &times;
+            <i className="trash outline icon"></i>
           </span>
         </div>
 

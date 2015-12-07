@@ -4,7 +4,8 @@
 $soleil: "soleil",sans-serif;
 $type: "source-code-pro",sans-serif;
 
-$aqua: #29EBD5; //logo: #2AFFE6;
+$brand: #2AFFE6;
+$aqua: #29EBD5;
 $purple: #A2AAFF;
 
 $lt-gray: #AEAEAE;
@@ -20,6 +21,11 @@ body{
   font-size: 14px; font-size: 1.4rem;
   color:$md-gray;
 }
+
+h2{
+  font-weight:normal;
+}
+
 img {
   width:100%;
 }
@@ -51,35 +57,104 @@ a:hover{
 /* accounts overrides */
 #login-buttons{
   float:right;
+  font-family:$soleil !important;
 }
 #login-buttons a, .accounts-dialog a {
   text-decoration: none !important;
 }
+a#login-name-link {
+  color:$lt-gray !important;
+  &:hover{
+    color:$md-gray !important;
+  }
+}
+#login-dropdown-list {
+  position: absolute;
+  left:auto !important;
+  right: -1px;
+}
+#login-buttons .login-button, .accounts-dialog .login-button{
+  background: $purple !important;
+  border: 0 !important;
+  font-family: $soleil !important;
+  padding: 10px 8px !important;
+}
+a.login-close-text {
+  color: #fff !important;
+  font-size:0.1rem;
+  float:right !important;
+}
+a.login-close-text:after{
+  content:'×';
+  font-size:3.4rem;
+  color:transparentize($lt-gray, 0.5);
+  transition:0.25s;
+}
+a.login-close-text:hover:after{
+  color:transparentize($lt-gray, 0.0);
+}
+#login-buttons input[type=text], .accounts-dialog input[type=text], #login-buttons input[type=email], .accounts-dialog input[type=email], #login-buttons input[type=password], .accounts-dialog input[type=password]{
+  border: solid transparentize($lt-gray,0.5) !important;
+  border-width: 0 0 1px 0 !important;
+  border-radius: 0 !important;
+}
+#login-buttons input:focus{
+  outline:none;
+  border: solid $lt-gray !important;
+  border-width: 0 0 1px 0 !important;
+  border-radius: 0 !important;
+}
+.accounts-dialog label, .accounts-dialog .title{
+  font-family:$soleil !important;
+  color:$lt-gray;
+}
 
 /* navigation */
 .navigation{
-  margin-top:2rem;
+  list-style:none;
+  margin:4rem 0;
+  padding:0;
+  font-size:1.5rem;
+  @media(min-width:768px){
+    margin:6rem 0;
+  }
+  li{
+    display:inline;
+    margin-right:3rem;
+    padding-bottom:0.5rem;
+    transition:0.25s;
+  }
+}
+.navigation a:hover{
+  color:$md-gray;
+}
+.navigation li:hover,
+.navigation li:active,
+.navigation li:focus,{
+  border-bottom:3px solid transparentize($aqua, 0.5);
+}
+.navigation li.active{
+  border-bottom:3px solid $lt-gray;
 }
 
 /* letters list */
 .letters-list{
   ul {
     list-style:none;
-    padding:0;
-    margin-top:3rem;
+    padding:2rem 0;
   }
   li {
-    margin:1rem 0;
-    padding:1rem 0;
     border-bottom:1px solid transparentize($lt-gray,0.75);
     display:flex;
     -webkit-flex-direction: column;
     flex-direction: column;
+    padding: 2rem 0;
+    margin: 4rem 0;
     @media(min-width:768px){
       align-items:center;
       flex-direction:row;
       margin:0;
-      padding:0;
+      padding: 2rem 0 1.5rem;
     }
   }
 }
@@ -102,15 +177,17 @@ a:hover{
   text-transform:uppercase;
   font-size:0.8rem;
   display:block;
-  margin-bottom:-1.25rem;
+  margin-bottom:-1.0rem;
+  margin-top: -0.8rem;
 }
-.contact{
-  font-size:1.8rem;
+span.contact{
+  font-size:2.0rem;
 }
 .letter-body{
   font-family:$type;
   color:$ink;
   display:inline;
+  font-size:1.5rem;
   @media(min-width:768px){
     -webkit-flex: 4 0 0;
      flex: 4 0 0;
@@ -126,16 +203,16 @@ a:hover{
   }
 }
 .remove-btn{
-  font-size:3.4rem;
-  vertical-align:-6px;
+  font-size:1.75rem;
   color:transparentize($lt-gray, 0.5);
   transition:0.25s;
-  vertical-align: 14px;;
   &:hover{
     color:transparentize($lt-gray, 0.0);
     cursor:pointer;
   }
 }
+
+/* modal */
 // http://blog.tryolabs.com/2015/04/13/a-reusable-modal-component-in-react/
 .modal-anim-enter {
   opacity: 0.00;
@@ -154,4 +231,211 @@ a:hover{
 .modal-anim-leave.modal-anim-leave-active {
   opacity: 0.00;
   transform: scale(0.7);
+}
+
+/* -Create- letter modal snailchat */
+.modal{
+  position:absolute;
+  top:5%;
+  left:5%;
+  max-width:1200px;
+  width: 90%; //fallback
+  width: 90vw;
+  padding:6rem 3rem;
+  box-sizing: border-box;
+  background:rgba(#fff, 0.95);
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 6rem;
+  z-index:999;
+  @media(min-width:768px){
+    padding:8rem 6rem;
+  }
+  @media(min-width:992px){
+    padding:12rem 9rem;
+  }
+}
+.modal-close{
+  float:right;
+  margin-top:-6rem;
+  font-size:5rem;
+  transition:0.25s;
+  color:transparentize($lt-gray, 0.5);
+  @media(min-width:768px){
+    margin-top:-7.5rem;
+  }
+  @media(min-width:992px){
+    margin-top:-9rem;
+  }
+}
+.modal-close:hover{
+  cursor:pointer;
+  color:transparentize($lt-gray, 0.0);
+}
+.new-letter label{
+  margin:1rem 0 0 0;
+  color:$aqua;
+  font-weight:700;
+}
+.new-letter input{
+  border:transparentize($lt-gray, 0.5) solid;
+  border-width: 0 0 1px 0;
+  background:transparent;
+  width:100%;
+  max-width:250px;
+  font-family:$soleil;
+  font-weight:700;
+  font-size:2.2rem;
+  margin:0;
+  color:$aqua;
+  &:focus{
+    outline:0;
+  }
+}
+.new-letter textarea{
+  border: 0;
+  width:100%;
+  margin: 4rem 0;
+  color:$md-gray;
+  height:50%;
+  height:50vh;
+  font-family: $type;
+  font-size:1.5rem;
+  line-height:2.0;
+  &:focus{
+    outline:0;
+  }
+}
+.new-letter input[type="submit"] {
+  background: $brand;
+  color: $md-gray;
+  border-bottom: 0;
+  padding: 2rem;
+  width: 190px;
+  margin:0 auto !important;
+  display:block;
+  transition:0.25s;
+  &:hover{
+    background:darken($brand,10%);
+    color:#fff;
+    cursor:pointer;
+  }
+  &:focus{
+    background:darken($brand,20%);
+  }
+}
+/* typeahead */
+ul.typeahead-selector {
+  font-weight: 700;
+  color:$lt-gray;
+  position: absolute;
+  background: #fff;
+  width: 250px;
+  border-radius: 3px;
+  a{
+    color:$lt-gray;
+  }
+}
+
+/* -Read- letter modal */
+.letter-modal li{
+  border-bottom:none;
+  display:flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.letter-modal .letter-from,
+.letter-modal .letter-to{
+  -webkit-flex: none;
+  flex: none;
+}
+.letter-modal .address-context{
+  font-size:1.0rem;
+}
+.letter-modal .letter-body {
+  -webkit-flex: none;
+  flex: none;
+  margin:5rem 0;
+}
+.letter-modal .remove-letter{
+  display:none;
+}
+.letter-modal .contact{
+  font-size:2.2rem;
+}
+
+/* find users page */
+.find-users-page label{
+  margin:1rem 0 0 0;
+  color:$lt-gray;
+  font-weight:700;
+}
+.find-users input{
+  border:transparentize($lt-gray, 0.5) solid;
+  border-width: 0 0 1px 0;
+  background:transparent;
+  width:100%;
+  max-width:250px;
+  font-family:$soleil;
+  font-weight:700;
+  font-size:3rem;
+  margin:0;
+  color:$md-gray;
+  &:focus{
+    outline:0;
+  }
+}
+ul.find-users-results{
+  position:absolute;
+  background: #fff;
+  width: 250px;
+  height: auto;
+  border-radius: 3px;
+  color:$lt-gray;
+  font-size:2.2rem;
+  list-style:none;
+  padding-left:0;
+}
+.find-users-results span{
+  font-weight:700;
+  color:$aqua;
+}
+h2.saved-users-title{
+  margin-top:12rem;
+  font-size:3.0rem;
+}
+.saved-users{
+  font-weight:700;
+  color:$purple;
+  font-size:2.0rem;
+  padding-left:0;
+  li{
+    list-style:none;
+    padding:0.5rem 0;
+  }
+}
+.remove-user,
+.save-user{
+  font-size:2rem;
+  margin-left:1rem;
+  transition:0.25s;
+  color:$lt-gray !important;
+}
+.save-user:hover{
+  cursor:pointer;
+  color:$md-gray !important;
+}
+.save-user:hover:after{
+  content:'save contact';
+  font-size:1.2rem;
+  margin-left:0.25rem;
+}
+.remove-user:hover{
+  cursor:pointer;
+  color:$md-gray !important;
+}
+.remove-user:hover:after{
+  content:'delete contact';
+  font-size:1.2rem;
+  margin-left:0.25rem;
 }

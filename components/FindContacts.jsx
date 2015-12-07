@@ -13,20 +13,23 @@ FindContacts = React.createClass({
   render(){
     var searchUsers = this.state.searchUsers;
     return (
-      <div>
+      <div className="find-users-page">
+        <label>search by username</label>
         <form className="find-users" onSubmit={this.handleSubmit}>
           <input
             type="text"
             value={searchUsers}
             onChange={this.handleChange}
             ref="findUser"
-            placeholder="Search by username…"
+            placeholder=""
           />
         </form>
-        <ul>
+        <ul className="find-users-results">
           {this.renderUsers()}
         </ul>
-        <ul>
+
+        <h2 className="saved-users-title">Saved Contacts</h2>
+        <ul className="saved-users">
           {this.renderRelationships()}
         </ul>
       </div>

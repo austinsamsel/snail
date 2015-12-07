@@ -12,21 +12,22 @@ Compose = React.createClass({
 
   render(){
     return (
-      <header>
-          <form className="new-letter" onSubmit={this.handleSubmit} >
-            <Typeahead
-              type="text"
-              ref="toUser"
-              placeholder="send to…"
-              options={this.getRelationships()}
-              maxVisible={3}
-            />
-            <textarea
-              ref="letterBody"
-              placeholder="Type your letter"></textarea>
-            <input type="submit" />
-          </form>
-      </header>
+      <div>
+        <form className="new-letter" onSubmit={this.handleSubmit} >
+          <label>addressed to:</label>
+          <Typeahead
+            type="text"
+            ref="toUser"
+            placeholder=""
+            options={this.getRelationships()}
+            maxVisible={3}
+          />
+          <textarea
+            ref="letterBody"
+            placeholder="Type your letter"></textarea>
+          <input type="submit" />
+        </form>
+      </div>
     )
   },
 

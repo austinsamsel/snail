@@ -25,20 +25,20 @@ User = React.createClass({
   // render conditionals
   followButton(){
     if ( ! this.isCurrentUser() && ! this.isFollowed() ) {
-      return <button
-        className="save"
+      return <span
+        className="save-user"
         onClick={this.saveThisContact}>
-        save contact
-      </button>;
+        <i className="add user icon"></i>
+      </span>;
     }
   },
   unfollowButton(){
     if ( ! this.isCurrentUser() && this.isFollowed() ) {
-      return <button
-        className="remove"
+      return <span
+        className="remove-user"
         onClick={this.removeThisContact}>
-        remove contact
-      </button>;
+        <i className="remove user icon"></i>
+      </span>;
     }
   },
   // helper functions

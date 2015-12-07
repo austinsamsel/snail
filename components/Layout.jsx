@@ -30,22 +30,26 @@ Layout = React.createClass({
               <img src="images/snail_logo.png" />
             </div>
 
-            <div className="navigation">
-              <a href='' onClick={this.openModal}>Compose</a> &nbsp;&nbsp; &nbsp;
-              <a href={FlowRouter.path('home')}
-                className={FlowHelpers.currentRoute( 'home' )}>Letters</a> &nbsp;&nbsp; &nbsp;
-              <a href={FlowRouter.path('contacts')}       className={FlowHelpers.currentRoute( 'contacts' )}>Contacts</a>
-            </div>
+            <ul className="navigation">
+              <li>
+                <a href='' onClick={this.openModal}>Compose</a>
+              </li>
+              <li className={FlowHelpers.currentRoute( 'home' )}>
+                <a href={FlowRouter.path('home')}>Letters</a>
+              </li>
+              <li className={FlowHelpers.currentRoute( 'contacts' )}>
+                <a href={FlowRouter.path('contacts')}>Contacts</a>
+              </li>
+            </ul>
 
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
+              <span className="modal-close remove-btn" onClick={this.closeModal}>&times;</span>
               <Compose />
-              <button onClick={this.closeModal}>Close modal</button>
             </Modal>
 
             {this.props.content}
 
-            footer stuff
           </div>
 
           :
