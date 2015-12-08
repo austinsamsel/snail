@@ -28,7 +28,7 @@ Letter = React.createClass({
         </Modal>
 
         <span onClick={this.openModal}>
-          <div class="modal-letter">
+          <div className="modal-letter">
             {this.letterToUser()}
             {this.letterFromUser()}
           </div>
