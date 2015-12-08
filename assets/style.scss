@@ -261,6 +261,9 @@ span.contact{
   color:$ink;
   display:inline;
   font-size:1.5rem;
+  max-height: 2rem;
+  overflow: hidden;
+  width:calc(100% - 20px);
   @media(min-width:768px){
     -webkit-flex: 4 0 0;
      flex: 4 0 0;
@@ -429,6 +432,8 @@ ul.typeahead-selector {
   -webkit-flex: none;
   flex: none;
   margin:5rem 0;
+  max-height: none;
+  overflow: auto;
 }
 .letter-modal .remove-letter{
   display:none;
