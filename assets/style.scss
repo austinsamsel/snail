@@ -269,6 +269,14 @@ span.contact{
      flex: 4 0 0;
   }
 }
+.new-letter .letter-body{
+  margin:5rem 0;
+  max-height:none;
+  display:inline-block;
+  &:focus{
+    outline:none;
+  }
+}
 .remove-letter{
   order:-1;
   margin:-3rem 0;
@@ -361,7 +369,6 @@ span.contact{
   font-family:$soleil;
   font-weight:700;
   font-size:2.2rem;
-  margin:0;
   color:$aqua;
   &:focus{
     outline:0;
@@ -377,6 +384,7 @@ span.contact{
   font-family: $type;
   font-size:1.5rem;
   line-height:2.0;
+  resize:none;
   &:focus{
     outline:0;
   }
@@ -387,7 +395,7 @@ span.contact{
   border-bottom: 0;
   padding: 2rem;
   width: 190px;
-  margin:0 auto !important;
+  margin: 6rem auto 0rem !important;
   display:block;
   transition:0.25s;
   &:hover{
