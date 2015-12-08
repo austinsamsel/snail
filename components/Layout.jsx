@@ -27,7 +27,7 @@ Layout = React.createClass({
           <div className="app-container">
             <AccountsUIWrapper />
             <div className="logo">
-              <img src="images/snail_logo.png" />
+              <a href="/"><img src="images/snail_logo.png" /></a>
             </div>
 
             <ul className="navigation">
@@ -54,13 +54,17 @@ Layout = React.createClass({
 
           :
 
-          <div>
-            <h1>app</h1>
-            <AccountsUIWrapper />
+          <div className="app-container">
 
-            <hr/>
+            <div className="logo">
+              <img src="images/snail_logo.png" />
+            </div>
 
-            You're not logged in.
+            <div className="welcome-body">
+              <p>Be a friend.</p>
+              <p>Write a letter.</p>
+              <AccountsUIWrapper />
+            </div>
           </div>
         }
       </div>
