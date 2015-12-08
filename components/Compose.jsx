@@ -22,9 +22,9 @@ Compose = React.createClass({
             options={this.getRelationships()}
             maxVisible={3}
           />
-          <textarea
+        <Textarea
             ref="letterBody"
-            placeholder="Type your letter"></textarea>
+            placeholder="Type your letter"></Textarea>
           <input type="submit" />
         </form>
       </div>
