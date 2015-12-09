@@ -361,12 +361,6 @@ span.contact{
   cursor:pointer;
   color:transparentize($lt-gray, 0.0);
 }
-.modal .contact:hover{
-  cursor:auto;
-}
-.modal .letter-body:hover{
-  cursor:auto;
-}
 .new-letter label{
   margin:1rem 0 0 0;
   color:$aqua;
@@ -448,12 +442,17 @@ ul.typeahead-selector {
 .letter-modal .address-context{
   font-size:1.0rem;
 }
+.letter-modal .contact:hover,
+.letter-modal .letter-body:hover{
+  cursor:auto;
+}
 .letter-modal .letter-body {
   -webkit-flex: none;
   flex: none;
   margin:5rem 0;
   max-height: none;
   overflow: auto;
+  white-space:pre-wrap;
 }
 .letter-modal .remove-letter{
   display:none;
