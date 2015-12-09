@@ -255,6 +255,9 @@ input#login-old-password {
 }
 span.contact{
   font-size:2.0rem;
+  &:hover{
+    cursor:pointer;
+  }
 }
 .letter-body{
   font-family:$type;
@@ -267,6 +270,9 @@ span.contact{
   @media(min-width:768px){
     -webkit-flex: 4 0 0;
      flex: 4 0 0;
+  }
+  &:hover{
+    cursor:pointer;
   }
 }
 .new-letter .letter-body{
@@ -354,6 +360,12 @@ span.contact{
 .modal-close:hover{
   cursor:pointer;
   color:transparentize($lt-gray, 0.0);
+}
+.modal .contact:hover{
+  cursor:auto;
+}
+.modal .letter-body:hover{
+  cursor:auto;
 }
 .new-letter label{
   margin:1rem 0 0 0;

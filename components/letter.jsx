@@ -27,13 +27,10 @@ Letter = React.createClass({
           </div>
         </Modal>
 
-        <span onClick={this.openModal}>
-          <div className="modal-letter">
-            {this.letterToUser()}
-            {this.letterFromUser()}
-          </div>
-        </span>
-
+        <div className="modal-letter">
+          {this.letterToUser()}
+          {this.letterFromUser()}
+        </div>
       </span>
     )
   },
@@ -52,9 +49,9 @@ Letter = React.createClass({
       return <li>
         <div className="letter-from">
           <span className="address-context">from</span>
-          <span className="contact">{this.senderAddress()}</span>
+          <span className="contact" onClick={this.openModal}>{this.senderAddress()}</span>
         </div>
-        <div className="letter-body">{this.props.letter.letterBody}</div>
+        <div className="letter-body" onClick={this.openModal}>{this.props.letter.letterBody}</div>
         <div className="remove-letter">
           <span className="remove-btn" onClick={this.deleteSentLetter}>
             <i className="trash outline icon"></i>
@@ -68,15 +65,14 @@ Letter = React.createClass({
       return <li>
         <div className="letter-to">
           <span className="address-context">to</span>
-          <span className="contact">{this.props.letter.toUser}</span>
+          <span className="contact" onClick={this.openModal}>{this.props.letter.toUser}</span>
         </div>
-        <div className="letter-body">{ this.props.letter.letterBody}</div>
+        <div className="letter-body" onClick={this.openModal}>{ this.props.letter.letterBody}</div>
         <div className="remove-letter">
           <span className="remove-btn" onClick={this.deleteSentLetter}>
             <i className="trash outline icon"></i>
           </span>
         </div>
-
       </li>;
     }
   },
