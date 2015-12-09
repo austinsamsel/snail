@@ -8,15 +8,17 @@ Layout = React.createClass({
     };
   },
 
+  // modals
   getInitialState: function() {
     return { isModalOpen: false };
   },
-
   openModal: function() {
     this.setState({ isModalOpen: true });
   },
-
   closeModal: function() {
+    this.setState({ isModalOpen: false });
+  },
+  handleChildClick: function(){
     this.setState({ isModalOpen: false });
   },
 
@@ -45,7 +47,7 @@ Layout = React.createClass({
             <Modal isOpen={this.state.isModalOpen}
                    transitionName="modal-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300} >
               <span className="modal-close remove-btn" onClick={this.closeModal}>&times;</span>
-              <Compose />
+              <Compose onClick={this.handleChildClick} />
             </Modal>
 
             {this.props.content}

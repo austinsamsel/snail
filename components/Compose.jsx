@@ -25,7 +25,7 @@ Compose = React.createClass({
         <Textarea
             ref="letterBody"
             placeholder="Type your letter"></Textarea>
-          <input type="submit" />
+          <input type="submit" onClick={this.props.onClick} />
         </form>
       </div>
     )
