@@ -16,12 +16,8 @@ if (Meteor.isServer) {
     return Letters.find({
       $or :
       [
-        { $and:
-          [ { toUser: username },
-            { 'deliverAt._d': {$lt: moment()._d} }
-          ]
-        },
-        { owner: this.userId }
+        { toUser: username }
+        , { owner: this.userId }
       ]
     });
   });
