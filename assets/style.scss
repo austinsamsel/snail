@@ -7,6 +7,7 @@ $type: "source-code-pro",sans-serif;
 $brand: #2AFFE6;
 $aqua: #29EBD5;
 $purple: #A2AAFF;
+$blue: #A2E0FF;
 
 $lt-gray: #AEAEAE;
 $md-gray: #767676;
@@ -232,8 +233,8 @@ input#login-old-password {
   }
 }
 .letters-list li.unread{
-  border-left: transparentize($aqua, 0.5) 3px solid;
-  padding: 2rem 0 1.5rem 0.5rem;
+  border-left: transparentize($blue, 0.0) 3px solid;
+  padding: 2rem 0 1.5rem 1.0rem;
 }
 .letter-from,
 .letter-to{
