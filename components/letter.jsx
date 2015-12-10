@@ -59,7 +59,7 @@ Letter = React.createClass({
         </div>
         <div className="letter-body" onClick={this.openModal}>{this.props.letter.letterBody}</div>
         <div className="remove-letter">
-          <span className="remove-btn" onClick={this.deleteSentLetter}>
+          <span className="remove-btn" onClick={this.deleteReceivedLetter}>
             <i className="trash outline icon"></i>
           </span>
         </div>
