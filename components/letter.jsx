@@ -5,16 +5,6 @@ Letter = React.createClass({
     letter: React.PropTypes.object.isRequired
   },
 
-  getInitialState: function() {
-    return { isModalOpen: false };
-  },
-  openModal: function() {
-    this.setState({ isModalOpen: true });
-  },
-  closeModal: function() {
-    this.setState({ isModalOpen: false });
-  },
-
   render(){
     return (
       <span>
@@ -33,6 +23,19 @@ Letter = React.createClass({
         </div>
       </span>
     )
+  },
+
+  getInitialState: function() {
+    return { isModalOpen: false };
+  },
+  openModal: function() {
+    this.setState({ isModalOpen: true });
+    if (this.toCurrentUser()){
+      Meteor.call("readCount", this.props.letter._id);
+    }
+  },
+  closeModal: function() {
+    this.setState({ isModalOpen: false });
   },
 
   //method calls

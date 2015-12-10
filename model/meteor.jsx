@@ -40,7 +40,8 @@ Meteor.methods({
       createdAt: new Date(),
       deliverAt: moment().add(1, 'minute'),
       owner: Meteor.userId(),
-      username: Meteor.user().username
+      username: Meteor.user().username,
+      readCount: 0,
     });
   },
 
@@ -49,6 +50,9 @@ Meteor.methods({
   },
   deleteSentLetter(letterId){
     Letters.update(letterId, {$set: {hideSent: true}});
+  },
+  readCount(letterId){
+    Letters.update(letterId, {$inc: {readCount: 1} } );
   },
 
   saveContact(saveContactId){
