@@ -37,7 +37,6 @@ Letter = React.createClass({
   closeModal: function() {
     this.setState({ isModalOpen: false });
   },
-
   //method calls
   deleteReceivedLetter() {
     Meteor.call("deleteReceivedLetter", this.props.letter._id);
@@ -46,11 +45,15 @@ Letter = React.createClass({
     Meteor.call("deleteSentLetter", this.props.letter._id);
   },
 
+
   // render conditionals
   letterToUser(){
     if ( this.toCurrentUser() ){
-      return <li>
-        <div className="letter-from">
+
+      const letterIsUnread = (this.props.letter.readCount == 0) ? "unread" : "";
+
+      return <li className={letterIsUnread}>
+        <div className="letter-from ">
           <span className="address-context">from</span>
           <span className="contact" onClick={this.openModal}>{this.senderAddress()}</span>
         </div>

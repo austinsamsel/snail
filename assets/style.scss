@@ -231,6 +231,10 @@ input#login-old-password {
     }
   }
 }
+.letters-list li.unread{
+  border-left: transparentize($aqua, 0.5) 3px solid;
+  padding: 2rem 0 1.5rem 0.5rem;
+}
 .letter-from,
 .letter-to{
   font-weight:700;
