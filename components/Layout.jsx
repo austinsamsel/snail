@@ -5,6 +5,7 @@ Layout = React.createClass({
   getMeteorData(){
     return{
       currentUser: Meteor.user(),
+      letters: Letters.find().fetch()
     };
   },
 
@@ -26,8 +27,11 @@ Layout = React.createClass({
     return Letters.find({ $and : [{toUser: Meteor.user().username}, {readCount: {$lt: 1}}] }).count();
   },
 
+  unreadCount(){
+    return (this.numUnreadLetters() > 0) ? ' ('+ this.numUnreadLetters()+')' : '';
+  },
+
   render() {
-    const unreadCount = (this.numUnreadLetters() > 0) ? this.numUnreadLetters() : '';
     return (
       <div>
         { this.data.currentUser ?
@@ -42,7 +46,7 @@ Layout = React.createClass({
                 <a href='' onClick={this.openModal}>Compose</a>
               </li>
               <li className={FlowHelpers.currentRoute( 'home' )}>
-                <a href={FlowRouter.path('home')}>Letters ({unreadCount})</a>
+                <a href={FlowRouter.path('home')}>Letters{this.unreadCount()}</a>
               </li>
               <li className={FlowHelpers.currentRoute( 'contacts' )}>
                 <a href={FlowRouter.path('contacts')}>Contacts</a>
