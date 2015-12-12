@@ -29,9 +29,15 @@ FindContacts = React.createClass({
         </ul>
 
         <h2 className="saved-users-title">Saved Contacts</h2>
-        <ul className="saved-users">
-          {this.renderRelationships()}
-        </ul>
+        { Relationships.find().count() > 0 ?
+          <ul className="saved-users">
+            {this.renderRelationships()}
+          </ul>
+        :
+          <span className="noContacts-msg">
+            You have no saved contacts.
+          </span>
+        }
       </div>
     );
   },

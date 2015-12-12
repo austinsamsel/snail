@@ -19,11 +19,19 @@ LettersList = React.createClass({
 
   render() {
     return (
-      <div className="letters-list">
-        <ul>
-          {this.renderLetters()}
-        </ul>
-      </div>
+      <span>
+        { Letters.find().count() > 0 ?
+          <div className="letters-list">
+            <ul>
+              {this.renderLetters()}
+            </ul>
+          </div>
+        :
+          <div className="no-letters-msg">
+            You have no messages.
+          </div>
+        }
+      </span>
     );
   }
 });
