@@ -27,7 +27,9 @@ if (Meteor.isServer) {
     return Meteor.users.find({},{fields: {'username': 1}});
   });
   Meteor.publish("relationships", function(){
-    return Relationships.find();
+    return Relationships.find({
+      owner: this.userId
+    });
   });
 }
 
