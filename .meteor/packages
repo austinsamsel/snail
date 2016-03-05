@@ -30,3 +30,5 @@ npm-container
 fourseven:scss
 francocatena:compass
 semantic:ui-icon
+sanjo:jasmine
+velocity:html-reporter
