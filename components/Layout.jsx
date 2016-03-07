@@ -46,7 +46,7 @@ Layout = React.createClass({
                 <a href='' onClick={this.openModal}>Compose</a>
               </li>
               <li className={FlowHelpers.currentRoute( 'home' )}>
-                <a href={FlowRouter.path('home')}>Letters{this.unreadCount()}</a>
+                <a href={FlowRouter.path('home')} className='unreadLettersCount'>Letters{this.unreadCount()}</a>
               </li>
               <li className={FlowHelpers.currentRoute( 'contacts' )}>
                 <a href={FlowRouter.path('contacts')}>Contacts</a>

@@ -45,7 +45,6 @@ Letter = React.createClass({
     Meteor.call("deleteSentLetter", this.props.letter._id);
   },
 
-
   // render conditionals
   letterToUser(){
     if ( this.toCurrentUser() ){
